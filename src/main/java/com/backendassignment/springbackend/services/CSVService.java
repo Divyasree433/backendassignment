@@ -18,10 +18,9 @@ import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
+import static com.backendassignment.springbackend.SpringbackendApplication.productMap;
+import static com.backendassignment.springbackend.SpringbackendApplication.supplierMap;
 
 @Service
 public class CSVService {
@@ -46,14 +45,9 @@ public class CSVService {
         }
     }
     public static String TYPE = "text/csv";
-
     public static boolean hasCSVFormat(MultipartFile file) {
         return TYPE.equals(file.getContentType());
     }
-
-    static Map<String, ProductEntity> productMap = new HashMap<>();
-    static Map<String, SupplierEntity> supplierMap = new HashMap<>();
-
     public static List[] csvToInventories(InputStream is) {
         try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
              CSVParser csvParser = new CSVParser(fileReader,
@@ -67,11 +61,12 @@ public class CSVService {
             for (CSVRecord csvRecord : csvRecords) {
                 ProductEntity product;
                 String code = csvRecord.get(0);
+
                 if (productMap.containsKey(code)) {
                     product = productMap.get(code);
                 } else {
                     product = new ProductEntity(
-                            csvRecord.get(0),
+                            code,
                             csvRecord.get("name"),
                             csvRecord.get("company")
                     );
@@ -86,7 +81,6 @@ public class CSVService {
                     supplier = new SupplierEntity(csvRecord.get("supplier"));
                     supplierMap.put(supplier.getSupplierName(), supplier);
                 }
-
                 ProductSupplierEntity inventoryData = new ProductSupplierEntity(
                         product,
                         csvRecord.get("batch"),

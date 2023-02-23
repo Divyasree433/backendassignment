@@ -37,6 +37,7 @@ public class ProductSupplierEntity {
     public ProductSupplierEntity() {
 
     }
+
     public void setExpiry(Date expiry) {
         this.expiry = expiry;
     }

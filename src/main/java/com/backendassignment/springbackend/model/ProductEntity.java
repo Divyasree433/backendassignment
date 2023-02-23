@@ -1,9 +1,11 @@
 package com.backendassignment.springbackend.model;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import org.hibernate.SessionFactory;
+
+import java.util.List;
 
 
 @Entity
@@ -24,4 +26,6 @@ public class ProductEntity {
     public String getCode() {
         return code;
     }
+
+
 }

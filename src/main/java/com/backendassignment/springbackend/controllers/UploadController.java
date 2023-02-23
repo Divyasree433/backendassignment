@@ -1,11 +1,15 @@
 package com.backendassignment.springbackend.controllers;
 
+import com.backendassignment.springbackend.model.ProductEntity;
+import com.backendassignment.springbackend.model.SupplierEntity;
 import com.backendassignment.springbackend.services.CSVService;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import static com.backendassignment.springbackend.services.CSVService.hasCSVFormat;
 
@@ -17,7 +21,6 @@ public class UploadController {
     public UploadController(CSVService csvService) {
         this.csvService = csvService;
     }
-
     @PostMapping("upload")
     public String uploadFile(@RequestParam MultipartFile file){
         if (hasCSVFormat(file)) {

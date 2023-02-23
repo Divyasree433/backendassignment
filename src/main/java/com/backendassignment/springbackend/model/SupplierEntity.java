@@ -20,7 +20,11 @@ public class SupplierEntity {
     public SupplierEntity(String supplierName) {
         this.supplierName = supplierName;
     }
-    public String getSupplierName() {
+
+    public SupplierEntity() {
+
+    }
+        public String getSupplierName() {
         return supplierName;
     }
 

@@ -1,11 +1,14 @@
 package com.backendassignment.springbackend.services;
 
+import com.backendassignment.springbackend.model.ProductEntity;
 import com.backendassignment.springbackend.model.ProductSupplierEntity;
 import com.backendassignment.springbackend.repository.ProductSupplierRepository;
 import com.backendassignment.springbackend.repository.SupplierRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SearchService {

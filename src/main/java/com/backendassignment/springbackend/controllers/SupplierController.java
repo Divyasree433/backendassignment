@@ -1,5 +1,6 @@
 package com.backendassignment.springbackend.controllers;
 
+import com.backendassignment.springbackend.model.ProductEntity;
 import com.backendassignment.springbackend.model.ProductSupplierEntity;
 import com.backendassignment.springbackend.services.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ public class SupplierController {
     public SupplierController(SearchService searchService) {
         this.searchService = searchService;
     }
+
     @GetMapping("supplier/{supplier}")
     Page<ProductSupplierEntity> getInventories(@PathVariable String supplier,
                                                @RequestParam(defaultValue = "") String productName,
